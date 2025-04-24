@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SagipResearch</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SagipResearch.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container-fluid px-0">
+        <!-- Top bar with hamburger -->
+        <div class="d-md-none bg-white py-2 px-3 shadow-sm">
+            <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
+                &#9776;
+            </button>
+        </div>
+
+        <!-- Sidebar for small screens (offcanvas) -->
+        <div class="offcanvas offcanvas-start d-md-none bg-light" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column align-items-center">
+                <a class="nav-link text-danger p-1" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/Image/Logo.png" width="150" class="mb-4 img-fluid" asp-append-version="true" />
+                </a>
+                <ul class="nav flex-column w-100 gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Hourly" asp-action="Index">HOURLY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Daily" asp-action="Index">DAILY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Messages" asp-action="Index">MESSAGES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Map" asp-action="Index">RADAR</a>
+                    </li>
+                </ul>
+                <div class="text-center mt-5 border border-3 border-dark p-2">
+                    <h2 class="fs-5">Philippine Standard Time</h2>
+                    <p class="fs-6" id="phTimeMobile"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-0">
+            <!-- Static Sidebar for desktop -->
+            <div class="d-none d-md-flex col-md-2 bg-gradient shadow p-3 flex-column align-items-center min-vh-100">
+                <a class="nav-link text-danger p-1" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/Image/Logo.png" width="180" class="mb-4 img-fluid" asp-append-version="true" />
+                </a>
+                <ul class="nav flex-column w-100 gap-3">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Hourly" asp-action="Index">HOURLY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Daily" asp-action="Index">DAILY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Messages" asp-action="Index">MESSAGES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Map" asp-action="Index">RADAR</a>
+                    </li>
+                </ul>
+
+                <div class="text-center mt-5 border border-3 border-dark p-2">
+                    <h2 class="fs-5">Philippine Standard Time</h2>
+                    <p class="fs-6" id="phTime"></p>
+                </div>
+
+            </div>
+
+            <!-- Main content -->
+            <main class="col-12 col-md-10 p-4">
+                <div class="shadow w-100 p-3 mb-4 text-center">
+                    <h2>@ViewContext.RouteData.Values["controller"]</h2>
+                </div>
+
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

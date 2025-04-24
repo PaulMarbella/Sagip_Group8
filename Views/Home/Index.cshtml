@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome SAGIP</h1>
+</div>
+
+<div class="container mt-4">
+    <!-- Outer Border Box -->
+    <div class="p-4">
+
+        <!-- Flexbox Row for Partial Views -->
+        <div class="d-flex justify-content-between align-items-center gap-3">
+            <div class="flex-fill border border-4">
+                @* @await Html.PartialAsync("~/Views/Alert/Index.cshtml") *@
+                Data#1
+            </div>
+            <div class="flex-fill border border-4">
+                @* @await Html.PartialAsync("_PartialView2") *@
+                Data#2
+            </div>
+            <div class="flex-fill border border-4">
+                @* @await Html.PartialAsync("_PartialView2") *@
+                Data#31
+            </div>
+        </div>
+    </div>
+</div>
