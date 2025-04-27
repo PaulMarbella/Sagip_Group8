@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SagipResearch</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SagipResearch.styles.css" asp-append-version="true" />
 </head>
@@ -55,30 +56,51 @@
                 </a>
                 <ul class="nav flex-column w-100 gap-3">
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Hourly" asp-action="Index">HOURLY</a>
+                        <a class="nav-link btn fw-bold text-center
+            @(ViewContext.RouteData.Values["controller"]?.ToString() == "Hourly" ? "btn-primary text-white" : "btn-outline-primary text-danger")"
+                           asp-controller="Hourly" asp-action="Index">
+                            HOURLY
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Daily" asp-action="Index">DAILY</a>
+                        <a class="nav-link btn fw-bold text-center
+            @(ViewContext.RouteData.Values["controller"]?.ToString() == "Daily" ? "btn-primary text-white" : "btn-outline-primary text-danger")"
+                           asp-controller="Daily" asp-action="Index">
+                            DAILY
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Messages" asp-action="Index">MESSAGES</a>
+                        <a class="nav-link btn fw-bold text-center
+            @(ViewContext.RouteData.Values["controller"]?.ToString() == "Messages" ? "btn-primary text-white" : "btn-outline-primary text-danger")"
+                           asp-controller="Messages" asp-action="Index">
+                            MESSAGES
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Map" asp-action="Index">RADAR</a>
+                        <a class="nav-link btn fw-bold text-center
+            @(ViewContext.RouteData.Values["controller"]?.ToString() == "Map" ? "btn-primary text-white" : "btn-outline-primary text-danger")"
+                           asp-controller="Map" asp-action="Index">
+                            RADAR
+                        </a>
                     </li>
                 </ul>
 
-                <div class="text-center mt-5 border border-3 border-dark p-2">
-                    <h2 class="fs-5">Philippine Standard Time</h2>
-                    <p class="fs-6" id="phTime"></p>
+
+                <div class="text-center mt-5 border border-1 border-primary p-2">
+                    <h2 class="fs-6">Philippine Standard Time</h2>
+                    <div class="d-flex justify-content-center align-items-center gap-2">
+                        <i class="bi bi-alarm"></i>
+                        <p class="fs-6 mb-0" id="phTime"></p>
+                    </div>
                 </div>
+
 
             </div>
 
             <!-- Main content -->
-            <main class="col-12 col-md-10 p-4">
+            <main class="col-12 col-md-10 p-4 ">
                 <div class="shadow w-100 p-3 mb-4 text-center">
-                    <h2>@ViewContext.RouteData.Values["controller"]</h2>
+                    <h2 class="text-primary">@ViewContext.RouteData.Values["controller"]</h2>
                 </div>
 
                 @RenderBody()
