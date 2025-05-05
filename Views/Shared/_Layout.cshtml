@@ -19,66 +19,87 @@
         </div>
 
         <!-- Sidebar for small screens (offcanvas) -->
-        <div class="offcanvas offcanvas-start d-md-none bg-light" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
+        <!-- Sidebar for small screens (offcanvas) -->
+        <div class="offcanvas offcanvas-start d-md-none mobile-sidebar" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel" style="max-width: 250px;">
             <div class="offcanvas-header">
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body d-flex flex-column align-items-center">
-                <a class="nav-link text-danger p-1" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/Image/Logo.png" width="150" class="mb-4 img-fluid" asp-append-version="true" />
+
+            <div class="offcanvas-body d-flex flex-column justify-content-between min-vh-100 px-3 pt-2 pb-4">
+                <!-- Logo -->
+                <a class="nav-link text-danger p-1 text-center" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/Image/Logo.png" width="140" class="mb-4 img-fluid" asp-append-version="true" />
                 </a>
-                <ul class="nav flex-column w-100 gap-3">
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Hourly" asp-action="Index">HOURLY</a>
+
+                <!-- Nav Items -->
+                <ul class="nav flex-column gap-3">
+                    <li class="nav-item d-flex align-items-center">
+                        <i class="bi bi-hourglass text-light me-2"></i>
+                        <a class="nav-link p-0" asp-controller="Hourly" asp-action="Index">HOURLY</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Daily" asp-action="Index">DAILY</a>
+                    <li class="nav-item d-flex align-items-center">
+                        <i class="bi bi-clock text-light me-2"></i>
+                        <a class="nav-link p-0" asp-controller="Daily" asp-action="Index">DAILY</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Messages" asp-action="Index">MESSAGES</a>
+                    <li class="nav-item d-flex align-items-center">
+                        <i class="bi bi-chat text-light me-2"></i>
+                        <a class="nav-link p-0" asp-controller="Messages" asp-action="Index">MESSAGES</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary text-danger fw-bold text-center" asp-controller="Map" asp-action="Index">RADAR</a>
+                    <li class="nav-item d-flex align-items-center">
+                        <i class="bi bi-cloud text-light me-2"></i>
+                        <a class="nav-link p-0" asp-controller="Map" asp-action="Index">RADAR</a>
                     </li>
                 </ul>
-                <div class="text-center mt-5 border border-3 border-dark p-2">
-                    <h2 class="fs-5">Philippine Standard Time</h2>
-                    <p class="fs-6" id="phTimeMobile"></p>
+
+                <!-- Time & Logo (bottom section) -->
+                <div class="text-center text-dark mt-5 mb-5 border-top border-1 border-dark pt-3">
+                    <p class="fs-6 fw-bold mb-1" id="phTimeMobile"></p>
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="~/Image/Philippine logo.png" width="40" alt="Philippine Logo" class="mb-1" />
+                        <h2 class="fs-6 fw-bold mb-0">Philippine</h2>
+                        <h2 class="fs-6 mb-">Time Zone</h2>
+                    </div>
                 </div>
             </div>
         </div>
 
+
+
         <div class="row g-0">
             <!-- Static Sidebar for desktop -->
-            <div class="d-none d-md-flex col-md-2 bg-gradient shadow p-3 flex-column align-items-center min-vh-100">
+            <div class="sidebar d-none d-md-flex col-md-2 shadow p-3 flex-column align-items-center justify-content-between min-vh-100">
                 <a class="nav-link text-danger p-1" asp-area="" asp-controller="Home" asp-action="Index">
                     <img src="~/Image/Logo.png" width="180" class="mb-4 img-fluid" asp-append-version="true" />
                 </a>
-                <ul class="nav flex-column w-100 gap-3">
-                    <li class="nav-item">
-                        <a class="nav-link btn fw-bold text-center
-            @(ViewContext.RouteData.Values["controller"]?.ToString() == "Hourly" ? "btn-primary text-white" : "btn-outline-primary text-danger")"
+                <ul class="nav w-100 gap-3">
+                    <li class="nav-item d-flex align-items-center">
+                        <i class="bi bi-hourglass text-light"></i>
+                        <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Hourly" ? "text-white" : "")"
                            asp-controller="Hourly" asp-action="Index">
                             HOURLY
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn fw-bold text-center
-            @(ViewContext.RouteData.Values["controller"]?.ToString() == "Daily" ? "btn-primary text-white" : "btn-outline-primary text-danger")"
+
+                    <li class="nav-item d-flex align-items-center">
+                        <i class="bi bi-clock text-light"></i>
+                        <a class="nav-link text-center
+            @(ViewContext.RouteData.Values["controller"]?.ToString() == "Daily" ? "text-white" : "nav-link")"
                            asp-controller="Daily" asp-action="Index">
                             DAILY
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn fw-bold text-center
-            @(ViewContext.RouteData.Values["controller"]?.ToString() == "Messages" ? "btn-primary text-white" : "btn-outline-primary text-danger")"
+                    <li class="nav-item d-flex align-items-center">
+                        <i class="bi bi-chat text-light"></i>
+                        <a class="nav-link   text-center
+            @(ViewContext.RouteData.Values["controller"]?.ToString() == "Messages" ? "text-white" : "nav-link")"
                            asp-controller="Messages" asp-action="Index">
                             MESSAGES
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn fw-bold text-center
-            @(ViewContext.RouteData.Values["controller"]?.ToString() == "Map" ? "btn-primary text-white" : "btn-outline-primary text-danger")"
+                    <li class="nav-item d-flex align-items-center">
+                        <i class="bi bi-cloud text-light"></i>
+                        <a class="nav-link  text-center
+            @(ViewContext.RouteData.Values["controller"]?.ToString() == "Map" ? "text-white" : "nav-link")"
                            asp-controller="Map" asp-action="Index">
                             RADAR
                         </a>
@@ -86,13 +107,17 @@
                 </ul>
 
 
-                <div class="text-center mt-5 border border-1 border-primary p-2">
-                    <h2 class="fs-6">Philippine Standard Time</h2>
-                    <div class="d-flex justify-content-center align-items-center gap-2">
-                        <i class="bi bi-alarm"></i>
-                        <p class="fs-6 mb-0" id="phTime"></p>
+                <div class="text-center text-white mt-5 border-top border-1 border-dark py-3 d-flex justify-content-center align-items-center gap-4">
+                    <div>
+                        <p class="fs-6 fw-bold mb-0" id="phTime"></p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="~/Image/Philippine logo.png" alt="Philippine Logo">
+                        <h2 class="fs-6 fw-bold mb-1">Philippine</h2>
+                        <h2 class="fs-6 mb-0">Time Zone</h2>
                     </div>
                 </div>
+
 
 
             </div>
@@ -100,7 +125,7 @@
             <!-- Main content -->
             <main class="col-12 col-md-10 p-4 ">
                 <div class="shadow w-100 p-3 mb-4 text-center">
-                    <h2 class="text-primary">@ViewContext.RouteData.Values["controller"]</h2>
+                    <h2 class="main-title">@ViewContext.RouteData.Values["controller"]</h2>
                 </div>
 
                 @RenderBody()

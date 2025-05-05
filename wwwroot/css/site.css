@@ -24,3 +24,46 @@ body{
     height:200px;
 }
 
+.sidebar,.mobile-sidebar {
+    background-color: #4B548B;
+}
+.nav-link {
+    color: #AEE5D1;
+    font-size: 20px;
+}
+.main-title {
+    color: #4B548B;
+}
+.mobile-sidebar .nav-item:hover a {
+    font-weight: bold;
+    color: white !important;
+}
+.sidebar .nav-item:hover a {
+    font-weight: bold;
+    color: white !important;
+}
+
+.sidebar .nav-item:hover i {
+    color: white !important;
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+}
+.weather-card {
+    background-color: #4B548B;
+    color: #AEE5D1;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.3s ease;
+    
+}
+.carousel-inner {
+    min-height: 300px;
+}
+
+

@@ -5,14 +5,20 @@
 
 function updatePhilippineTime() {
     const now = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" });
-    const timeText = new Date(now).toLocaleTimeString();
+    const date = new Date(now);
+
+    const day = date.toLocaleDateString('en-US', { weekday: 'long' });
+    const time = date.toLocaleTimeString('en-US', { hour12: true });
+
+    const dateTimeText = `${day} ${time}`;
 
     const desktopClock = document.getElementById("phTime");
     const mobileClock = document.getElementById("phTimeMobile");
 
-    if (desktopClock) desktopClock.textContent = timeText;
-    if (mobileClock) mobileClock.textContent = timeText;
+    if (desktopClock) desktopClock.textContent = dateTimeText;
+    if (mobileClock) mobileClock.textContent = dateTimeText;
 }
 
 setInterval(updatePhilippineTime, 1000);
-updatePhilippineTime(); // initialize immediately
+updatePhilippineTime(); // run immediately
+
