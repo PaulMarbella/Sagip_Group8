@@ -12,10 +12,13 @@
 <body>
     <div class="container-fluid px-0">
         <!-- Top bar with hamburger -->
-        <div class="d-md-none bg-white py-2 px-3 shadow-sm">
+        <div class="d-md-none  py-2 px-3 shadow-sm d-flex topbar-mobile">
             <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
                 &#9776;
             </button>
+            <a class="nav-link text-danger p-1 text-center" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/Image/Logo.png" class="mb-4 img-fluid mobile-logo-img" asp-append-version="true" />
+            </a>
         </div>
 
         <!-- Sidebar for small screens (offcanvas) -->
@@ -23,14 +26,10 @@
         <div class="offcanvas offcanvas-start d-md-none mobile-sidebar" tabindex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel" style="max-width: 250px;">
             <div class="offcanvas-header">
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
             </div>
 
             <div class="offcanvas-body d-flex flex-column justify-content-between min-vh-100 px-3 pt-2 pb-4">
-                <!-- Logo -->
-                <a class="nav-link text-danger p-1 text-center" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/Image/Logo.png" width="140" class="mb-4 img-fluid" asp-append-version="true" />
-                </a>
-
                 <!-- Nav Items -->
                 <ul class="nav flex-column gap-3">
                     <li class="nav-item d-flex align-items-center">
@@ -69,9 +68,9 @@
             <!-- Static Sidebar for desktop -->
             <div class="sidebar d-none d-md-flex col-md-2 shadow p-3 flex-column align-items-center justify-content-between min-vh-100">
                 <a class="nav-link text-danger p-1" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/Image/Logo.png" width="180" class="mb-4 img-fluid" asp-append-version="true" />
+                    <img src="~/Image/Logo.png" width="180" class="mb-4 img-fluid logo-img" asp-append-version="true" />
                 </a>
-                <ul class="nav w-100 gap-3">
+                <ul class="nav gap-3 col-9">
                     <li class="nav-item d-flex align-items-center">
                         <i class="bi bi-hourglass text-light"></i>
                         <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Hourly" ? "text-white" : "")"
@@ -124,7 +123,7 @@
 
             <!-- Main content -->
             <main class="col-12 col-md-10 p-4 ">
-                <div class="shadow w-100 p-3 mb-4 text-center">
+                <div class="shadow p-3 mb-4 text-center">
                     <h2 class="main-title">@ViewContext.RouteData.Values["controller"]</h2>
                 </div>
 
