@@ -1,5 +1,4 @@
 html {
-  font-size: 14px;
   box-sizing:border-box;
 }
 
@@ -36,6 +35,11 @@ body{
     max-width: 100%;
     font-size: 1.5vw;
 }
+.time {
+    font-size: 1.5vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .main-title {
     color: #4B548B;
 }
@@ -54,13 +58,19 @@ body{
     transition: transform 0.2s ease;
 }
 .logo-img {
-    width: 15vw; /* Will scale based on viewport width */
+    width: 15vw; 
+    max-width: 100%;
+    height: auto;
+    transition: width 0.3s ease;
+}
+.logo-ph {
+    width: 10vw;
     max-width: 100%;
     height: auto;
     transition: width 0.3s ease;
 }
 .mobile-logo-img {
-    width: 14vw; /* responsive width */
+    width: 14vw;
     max-width: 140px;
     height: auto;
     object-fit: contain;

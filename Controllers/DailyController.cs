@@ -8,5 +8,9 @@ namespace SagipResearch.Controllers
         {
             return View();
         }
+        public IActionResult WeatherInfo()
+        {
+            return View();
+        }
     }
 }
