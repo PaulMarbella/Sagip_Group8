@@ -13,7 +13,6 @@ html {
 }
 
 html {
-  position: relative;
   min-height: 100%;
 }
 body{
@@ -23,17 +22,29 @@ body{
 .home-box3{
     height:200px;
 }
-
+.layout-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+}
+.sidebar {
+    width: 250px;
+    min-width: 250px;
+    background-color: #343a40;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .sidebar,.mobile-sidebar,.topbar-mobile {
     background-color: #4B548B;
 }
 .nav-link {
-    color: #AEE5D1;
-    white-space: nowrap;
-    overflow: hidden;
+    color: white;
     text-overflow: ellipsis;
     max-width: 100%;
-    font-size: 1.5vw;
+    font-size: 1.2rem;
+    text-align: center;
 }
 .time {
     font-size: 1.5vw;
@@ -47,9 +58,17 @@ body{
     font-weight: bold;
     color: white !important;
 }
+.nav-item-a {
+    
+}
 .sidebar .nav-item:hover a {
     font-weight: bold;
-    color: white !important;
+    color: #aee7d0;
+}
+
+.nav-link.active-custom {
+    color: #aee7d0 !important;
+    font-weight: bold;
 }
 
 .sidebar .nav-item:hover i {
@@ -57,26 +76,14 @@ body{
     transform: scale(1.2);
     transition: transform 0.2s ease;
 }
-.logo-img {
-    width: 15vw; 
-    max-width: 100%;
-    height: auto;
-    transition: width 0.3s ease;
+.nav-item i {
+    font-size: 2em;
 }
-.logo-ph {
-    width: 10vw;
-    max-width: 100%;
-    height: auto;
-    transition: width 0.3s ease;
+.main-content {
+    flex-grow: 1;
+    overflow-x: auto;
 }
-.mobile-logo-img {
-    width: 14vw;
-    max-width: 140px;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-}
+
 
 
 

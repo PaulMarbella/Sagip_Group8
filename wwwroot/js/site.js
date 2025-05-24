@@ -3,22 +3,13 @@
 
 // Write your JavaScript code.
 
-function updatePhilippineTime() {
-    const now = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" });
-    const date = new Date(now);
-
-    const day = date.toLocaleDateString('en-US', { weekday: 'long' });
-    const time = date.toLocaleTimeString('en-US', { hour12: true });
-
-    const dateTimeText = `${day} ${time}`;
-
-    const desktopClock = document.getElementById("phTime");
-    const mobileClock = document.getElementById("phTimeMobile");
-
-    if (desktopClock) desktopClock.textContent = dateTimeText;
-    if (mobileClock) mobileClock.textContent = dateTimeText;
+function updateTime() {
+    const now = new Date();
+    const options = { timeZone: 'Asia/Manila', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+    const phTime = now.toLocaleTimeString('en-US', options);
+    document.getElementById("phTime").innerText = phTime;
+    document.getElementById("phTimeMobile").innerText = phTime;
 }
-
-setInterval(updatePhilippineTime, 1000);
-updatePhilippineTime(); // run immediately
+setInterval(updateTime, 1000);
+updateTime();
 
